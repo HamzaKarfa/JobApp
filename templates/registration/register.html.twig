@@ -72,6 +72,10 @@
                                 <i class="fa fa-eye show-password"></i>
                                 <span class="help-block">{{ form_help(registrationForm.plainPassword.second) }}</span>
                             </div>
+                            <div class="mt-30">
+                                {{ form_errors(registrationForm.roles) }}
+                                {{ form_widget(registrationForm.roles, {'attr':{'class': 'primary with-gap'}}) }}
+                            </div>
                             <div class="checkbox">
                                 {{ form_errors(registrationForm.agreeTerms) }}
                                 {{ form_widget(registrationForm.agreeTerms) }}
@@ -87,9 +91,16 @@
                 </div>
             </div>
         </section>
-
     </div>
-
-</div> #}
-
+</div>
+<script>
+window.addEventListener('DOMContentLoaded',()=>{
+    const radioInputs = document.querySelectorAll('[type="radio"]')
+    radioInputs.forEach((radio)=>{
+        console.log(radio)
+        radio.classList.add('with-gap')
+        radio.classList.add('primary')
+    })
+})
+</script>
 {% endblock %}

@@ -1322,15 +1322,28 @@ h4 {
 }
 
 .btn.gradient.quaternary {
-    background-image: linear-gradient(to right, #9d4747 0%, #b97c7c 51%, #9d4747 100%)
+    background-image: linear-gradient(to right, #9d4747 0%, #c45d5d 51%, #9d4747 100%)
 }
 
 .btn.quaternary,
 .btn:focus.quaternary {
-    background-color: #b97c7c;
+    background-color: #c45d5d;
     color: #ffffff
 }
 .btn.border.quaternary, .btn.border:hover.quaternary, .btn.border:focus.quaternary {
-    color: #b97c7c;
-    border: 1px solid #b97c7c;
+    color: #c45d5d;
+    border: 1px solid #c45d5d;
+}
+ 
+.secondary[type="radio"]:checked + label:after {
+    border: 2px solid #92804d;
+    background-color: #92804d;
+}
+[type="radio"]:checked + label:after {
+    border: 2px solid #2f3138 !important;
+    background-color: #2f3138 !important;
+} 
+
+[type="radio"].with-gap:checked + label:before {
+    border: 2px solid #2f3138 !important;
 }
