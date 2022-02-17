@@ -7,6 +7,7 @@ use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use App\Security\UserAuthenticator;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,6 +44,19 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $className ="App\Entity\\". $form->get('roles')->getData();
+            
+            if(class_exists($className)){
+                $userRelation = new $className;
+                $userRelation->setUser($user);
+                $userRelation->setCreatedAt(new DateTimeImmutable());
+                $userRelation->setUpdatedAt(new DateTimeImmutable());
+                $entityManager->persist($userRelation);
+            }else{
+                throw new \Exception("Error when create user Candidate or Recruiter", 500);
+            }
+            $user->setCreatedAt(new DateTimeImmutable());
+            $user->setUpdatedAt(new DateTimeImmutable());
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -97,4 +111,5 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('app_register');
     }
+
 }

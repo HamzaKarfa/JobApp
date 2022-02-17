@@ -4,26 +4,28 @@ namespace App\Entity;
 
 use App\Repository\CandidateRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Uid\Uuid;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 #[ORM\Entity(repositoryClass: CandidateRepository::class)]
 class Candidate
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy:"CUSTOM")]
+    #[ORM\Column(type:'uuid', unique:true)]
+    #[ORM\CustomIdGenerator(class:'Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
     private $gender;
 
-    #[ORM\Column(type: 'string', length: 50)]
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $adress;
+    private $address;
 
     #[ORM\Column(type: 'string', length: 100, nullable: true)]
     private $country;
@@ -47,10 +49,10 @@ class Candidate
     private $current_location;
 
     #[ORM\Column(type: 'date', nullable: true)]
-    private $date_of_birth;
+    private $birthdate;
 
     #[ORM\Column(type: 'string', length: 100, nullable: true)]
-    private $place_of_birth;
+    private $birthplace;
 
     #[ORM\OneToOne(inversedBy: 'candidate', targetEntity: User::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -74,7 +76,7 @@ class Candidate
     #[ORM\Column(type: 'datetime_immutable')]
     private $updated_at;
 
-    public function getId(): ?int
+    public function getId(): ?Uuid
     {
         return $this->id;
     }
@@ -115,14 +117,14 @@ class Candidate
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(?string $adress): self
+    public function setAddress(?string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
@@ -211,26 +213,26 @@ class Candidate
         return $this;
     }
 
-    public function getDateOfBirth(): ?\DateTimeInterface
+    public function getBirthdate(): ?\DateTimeInterface
     {
-        return $this->date_of_birth;
+        return $this->birthdate;
     }
 
-    public function setDateOfBirth(?\DateTimeInterface $date_of_birth): self
+    public function setBirthdate(?\DateTimeInterface $birthdate): self
     {
-        $this->date_of_birth = $date_of_birth;
+        $this->birthdate = $birthdate;
 
         return $this;
     }
 
-    public function getPlaceOfBirth(): ?string
+    public function getBirthplace(): ?string
     {
-        return $this->place_of_birth;
+        return $this->birthplace;
     }
 
-    public function setPlaceOfBirth(?string $place_of_birth): self
+    public function setBirthplace(?string $birthplace): self
     {
-        $this->place_of_birth = $place_of_birth;
+        $this->birthplace = $birthplace;
 
         return $this;
     }

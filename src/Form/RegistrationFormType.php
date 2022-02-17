@@ -66,12 +66,13 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'choices'  => [
                     'Candidate' => 'Candidate',
-                    'Employee' => 'Employee',
+                    'Recruiter' => 'Recruiter',
                 ],
                 'attr'=>[
                     'class'=>'primary with-gap'
                 ],
                 'expanded'=>true,
+                'help'=>"You're candidate or recruiter ?"
             ])
         ;
     }

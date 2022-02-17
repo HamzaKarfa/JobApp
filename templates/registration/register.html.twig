@@ -72,9 +72,15 @@
                                 <i class="fa fa-eye show-password"></i>
                                 <span class="help-block">{{ form_help(registrationForm.plainPassword.second) }}</span>
                             </div>
-                            <div class="mt-30">
-                                {{ form_errors(registrationForm.roles) }}
-                                {{ form_widget(registrationForm.roles, {'attr':{'class': 'primary with-gap'}}) }}
+                            <div class="mt-10 mb-20 row checkbox">
+                                       <label> {{ form_help(registrationForm.roles) }}
+                                {% for role in registrationForm.roles.children %}
+                                    <div class='col-sm-6'>
+                                        {{ form_errors(role) }}
+                                        {{ form_widget(role, {'attr': {'checked': role.vars.value == 'Candidate' ? true : false}}) }}
+                                        {{ form_label(role) }}
+                                    </div>
+                                {% endfor %}
                             </div>
                             <div class="checkbox">
                                 {{ form_errors(registrationForm.agreeTerms) }}
