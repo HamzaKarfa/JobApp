@@ -104,11 +104,11 @@ jobs:
       - name: Setup Database
         run: |
           php bin/console about --env=dev
+          php bin/console doctrine:database:create
 
 
-      - name: Load Doctrine fixtures
-        run: |
-          php bin/console doctrine:fixtures:load
+      # - name: Load Doctrine fixtures
+      #   run: |
   
       # - name: Run functionnal and unit tests
       #   run: |
