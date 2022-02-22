@@ -88,15 +88,15 @@ jobs:
         run: |
           php bin/console about
 
-      ## —— Coding standards ✨ ————————————————————————————————————————————————
-      - name: Coding standards checks (php_codesniffer + php-cs-fixer)
-        run: make cs
-        if: matrix.php-versions == '8.0'
+      # ## —— Coding standards For php-cs-fixer  ————————————————————————————————————————————————
+      # - name: Coding standards checks (php_codesniffer + php-cs-fixer)
+      #   run: make cs
+      #   if: matrix.php-versions == '8.0'
 
-      ## —— Static analysis ✨ —————————————————————————————————————————————————
-      - name: Static analysis of PHP code (PHPStan)
-        run: |
-          php bin/console about --env=prod
+      # ## —— Static analysis  —————————————————————————————————————————————————
+      # - name: Static analysis of PHP code (PHPStan)
+      #   run: |
+      #     php bin/console about --env=prod
      
 
       ## —— Tests ✅ ———————————————————————————————————————————————————————————
