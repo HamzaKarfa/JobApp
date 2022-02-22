@@ -83,14 +83,10 @@ jobs:
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
       - name: Check bin/console
         run: php bin/console
-      
-      - name: Check Symfony CLI
-        run: symfony -v
-      
+
       - name: Check the Symfony console
         run: |
           bin/console about
-          bin/console strangebuzz:version
 
       ## —— Coding standards ✨ ————————————————————————————————————————————————
       - name: Coding standards checks (php_codesniffer + php-cs-fixer)
