@@ -62,7 +62,10 @@
                             style="margin-top: 32px;">
                         <div class="btn btn-lg primary waves-effect waves-light">
                             <span><i class="material-icons">insert_photo</i> Photo</span>
-                            <input id="photo" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="photo" type="file">
+                            {{ form_widget(form.profil_picture, {"attr" : {
+                                "size":"20000000", 
+                                "accept":".pdf,.jpg,.doc,.docx,.png,.gif"
+                            }}) }}
                         </div>
 
                         <div class="existing-file">
@@ -116,7 +119,13 @@
                         <div class="file-field input-field">
                             <div class="btn btn-lg primary waves-effect waves-light">
                                 <span><i class="material-icons">&#xE24D;</i> Passport</span>
-                                <input id="passport" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="passport" type="file">
+                                {{ 
+                                    form_widget(form.passport_file, {"attr" : {
+                                        "size":"20000000", 
+                                        "accept":".pdf,.jpg,.doc,.docx,.png,.gif"
+                                    }}) 
+                                }}
+                                {# <input id="passport" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="passport" type="file"> #}
                             </div>
                             <div class="existing-file">
                                 <a href="#!" target="_blank"><i class="material-icons">&#xE24D;</i> passeport.jpg</a>
@@ -129,7 +138,13 @@
                         <div class="file-field input-field">
                             <div class="btn btn-lg primary waves-effect waves-light">
                                 <span><i class="material-icons">&#xE24D;</i> CV</span>
-                                <input id="cv" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="cv" type="file">
+                                {{ 
+                                    form_widget(form.curriculum_vitae, {"attr" : {
+                                        "size":"20000000", 
+                                        "accept":".pdf,.jpg,.doc,.docx,.png,.gif"
+                                    }}) 
+                                }}
+                                {# <input id="cv" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="cv" type="file"> #}
                             </div>
 
                             <div class="existing-file">
@@ -186,19 +201,19 @@
                 <h3 class="text-extrabold">Your K-Yachting account</h3>
                 <div class="col-xs-12 col-sm-4">
                     <div class="input-field">
-                        <input required="required" id="email" name="email" type="email" value="">
+                        <input required="required" id="email" name="email" type="email" value={{ candidate.user.email }}>
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="input-field">
-                        <input id="password" name="password" type="password" value="">
+                        <input id="password" name="password" type="password" value={{ candidate.user.password }}>
                         <label for="password">Change your password here</label>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="input-field">
-                        <input id="password_repeat" name="password_repeat" type="password" value="">
+                        <input id="password_repeat" name="password_repeat" type="password" value={{ candidate.user.password }}>
                         <label for="password_repeat">Confirm your new password</label>
                     </div>
                 </div>
