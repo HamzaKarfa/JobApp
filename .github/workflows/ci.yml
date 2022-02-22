@@ -72,7 +72,7 @@ jobs:
         #NODE_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
       - name: Yarn build
-        run: yarn run encore production
+        run: yarn build
 
       # —— Composer 🧙‍️ —————————————————————————————————————————————————————————
       - name: Validate composer.json and composer.lock
