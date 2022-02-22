@@ -80,9 +80,12 @@ jobs:
         run: composer install
 
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
-      - name: Check Symfony requirements
-        run: vendor/bin/requirements-checker
-
+      - name: Check bin/console
+        run: php bin/console
+      
+      - name: Check Symfony CLI
+        run: symfony -v
+      
       - name: Check the Symfony console
         run: |
           bin/console about
