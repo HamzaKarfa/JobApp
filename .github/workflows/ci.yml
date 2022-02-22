@@ -86,7 +86,7 @@ jobs:
 
       - name: Check the Symfony console
         run: |
-          bin/console about
+          php bin/console about
 
       ## —— Coding standards ✨ ————————————————————————————————————————————————
       - name: Coding standards checks (php_codesniffer + php-cs-fixer)
@@ -96,16 +96,16 @@ jobs:
       ## —— Static analysis ✨ —————————————————————————————————————————————————
       - name: Static analysis of PHP code (PHPStan)
         run: |
-          bin/console about --env=prod
-          make static-analysis
+          php bin/console about --env=prod
+     
 
       ## —— Tests ✅ ———————————————————————————————————————————————————————————
       # We use the dev env here
       - name: Load Doctrine fixtures
         run: |
-          make load-fixtures
+          php bin/console doctrine:fixtures:load
   
-      - name: Run functionnal and unit tests
-        run: |
-          cp phpunit.xml.ci phpunit.xml
-          ./vendor/bin/phpunit --testsuite='main'
+      # - name: Run functionnal and unit tests
+      #   run: |
+      #     cp phpunit.xml.ci phpunit.xml
+      #     ./vendor/bin/phpunit --testsuite='main'
