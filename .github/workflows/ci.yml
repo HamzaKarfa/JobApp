@@ -78,7 +78,7 @@ jobs:
 
       # Remove vendor and composer.lock before run composer install (~70% of the builds are failing without this)
       - name:  Install Composer dependencies 
-        run: rm -r vendor/ && rm composer.lock && composer install --no-cache
+        run: rm composer.lock && composer install --no-cache
 
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
       - name: Check bin/console
