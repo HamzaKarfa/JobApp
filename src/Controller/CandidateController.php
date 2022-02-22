@@ -76,8 +76,6 @@ class CandidateController extends AbstractController
                 'passport_file_directory' 
             );
             $this->uploadFile(
-                
-                
                 $form->get("curriculum_vitae")->getData(),
                 $slugger, 
                 'curriculum_vitae_directory' 
@@ -110,7 +108,7 @@ class CandidateController extends AbstractController
     }
 
 
-    public function uploadFile(UploadedFile $brochureFile, SluggerInterface $slugger, string $directory){
+    public function uploadFile(UploadedFile|null $brochureFile, SluggerInterface $slugger, string $directory){
         if ($brochureFile) {
             $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
             // this is needed to safely include the file name as part of the URL

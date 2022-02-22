@@ -185,9 +185,12 @@
                 </div>
                 <div class="col-xs-12 col-sm-12">
                     <div class="input-field">
-                        <textarea class="materialize-textarea" id="description" name="description" cols="50" rows="10"></textarea>
                         {{ form_errors(form.short_description) }}
-                        {{ form_widget(form.short_description) }}
+                        {{ form_widget(form.short_description, {"attr" : {
+                            "class":"materialize-textarea",
+                            "cols":"50",
+                            "rows":"10"
+                        }}) }}
                         <label for="candidate_short_description">Short description for your profile, as well as more personnal informations (e.g. your hobbies/interests ). You can also paste any link you want.</label>
                     </div>
                 </div>
