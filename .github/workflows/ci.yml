@@ -75,6 +75,9 @@ jobs:
         run: yarn build
 
       # —— Composer 🧙‍️ —————————————————————————————————————————————————————————
+      - name: Composer Update dependencies
+        run: composer update
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -90,7 +93,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: make install
+        run: composer install
 
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
       - name: Check Symfony requirements
@@ -112,16 +115,12 @@ jobs:
           bin/console about --env=prod
           make static-analysis
 
-      ## —— JWT 💫 —————————————————————————————————————————————————————————————
-      - name: Generate the SSL keys
-        run: bin/console lexik:jwt:generate-keypair
-
       ## —— Tests ✅ ———————————————————————————————————————————————————————————
       # We use the dev env here
-      - name: Load Doctrine fixtures and populate the Elasticsearch indexes
+      - name: Load Doctrine fixtures
         run: |
           make load-fixtures
-          make populate
+  
 
       - name: Run functionnal and unit tests
         run: |
