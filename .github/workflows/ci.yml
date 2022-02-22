@@ -101,6 +101,11 @@ jobs:
 
       ## —— Tests ✅ ———————————————————————————————————————————————————————————
       # We use the dev env here
+      - name: Setup Database
+        run: |
+          php bin/console about --env=dev
+
+
       - name: Load Doctrine fixtures
         run: |
           php bin/console doctrine:fixtures:load
